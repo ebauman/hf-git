@@ -5,9 +5,11 @@ import (
 	controllergen "github.com/rancher/wrangler/pkg/controller-gen"
 	"github.com/rancher/wrangler/pkg/controller-gen/args"
 	v1 "k8s.io/api/core/v1"
+	"os"
 )
 
 func main() {
+	_ = os.Unsetenv("GOPATH")
 	controllergen.Run(args.Options{
 		OutputPackage: "github.com/ebauman/hf-git/generated",
 		Boilerplate: "hack/boilerplate.txt",

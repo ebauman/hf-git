@@ -30,7 +30,9 @@ func WatchRepo(repo v1alpha1.GitRepo, ctx context.Context, messages chan<- Messa
 			if err != nil {
 				gw.messagef("error polling repo: %v", err)
 			}
-
+			if rev != gw.gr.Status.Revision {
+				// clone again and rebuild
+			}
 		}
 		time.Sleep(time.Second * 60)
 	}
